@@ -1,0 +1,10 @@
+2025-08-25 14:33:44,981 - INFO - User input query: who is lebron james
+2025-08-25 14:33:44,982 - INFO - Starting Google search for query: who is lebron james
+2025-08-25 14:33:47,269 - INFO - Google homepage loaded
+2025-08-25 14:33:50,283 - INFO - No cookies popup to accept
+2025-08-25 14:34:20,290 - ERROR - Error during Google search or page scraping: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name=\"q\"]")
+
+2025-08-25 14:34:20,447 - INFO - Browser closed
+2025-08-25 14:34:20,453 - INFO - Fetched 0 pages
