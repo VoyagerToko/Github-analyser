@@ -20,7 +20,7 @@ logging.basicConfig(
 )
 
 # ✅ Choose Ollama model here (must be pulled or running)
-MODEL_NAME = "phi"  # or llama3, mistral, phi, etc.
+MODEL_NAME = "mistral"  # or llama3, mistral, phi, etc.
 
 # Initialize the Ollama model
 llm = ChatOllama(model=MODEL_NAME)

@@ -4,3 +4,7 @@ langchain
 openai
 tiktoken
 langchain_community
+playwright
+beautifulsoup4
+langchain_ollama
+smolagents[toolkit]
