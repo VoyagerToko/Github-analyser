@@ -37,6 +37,21 @@ BLOCKED_EXTENSIONS = (".pdf", ".zip", ".rar", ".7z", ".png", ".jpg", ".jpeg", ".
 # ---------------------------------
 # Utilities
 # ---------------------------------
+
+def generate_search_query(question: str) -> str:
+    """
+    Uses the LLM to rephrase the user's natural-language question into an optimized search query.
+    """
+    prompt = (
+        "You are a helpful assistant that creates optimized search queries for search engines.\n"
+        "Given a user's natural-language question, create a short, precise search query to find the best results online.\n\n"
+        f"User question: {question}\n\n"
+        "Search query:"
+    )
+    response = llm.invoke(prompt)
+    return response.content.strip()
+
+
 def normalize_urls(search_output, mode: str) -> List[str]:
     """
     Accepts outputs from google/duckduckgo (list[str]), tavily/serpapi (list[tuple]),
@@ -362,8 +377,12 @@ def summarize_with_ollama(question: str, pages: List[Tuple[str, str]]) -> str:
 # Main runner
 # ---------------------------------
 async def main():
-    query = input("Enter your question: ").strip()
-    print(f"Searching for: {query}")
+    user_question = input("Enter your question: ").strip()
+    log.info(f"🧠 Original question: {user_question}")
+
+    query = generate_search_query(user_question)
+    log.info(f"🔍 Refined search query: {query}")
+
 
     # --- Search ---
     if SEARCH_MODE == "google":
@@ -391,7 +410,8 @@ async def main():
 
     # --- Summarize ---
     print(f"Fetched & scraped {len(pages)} page(s). Summarizing with Mistral…")
-    answer = summarize_with_ollama(query, pages)
+    answer = summarize_with_ollama(user_question, pages)
+
 
     print("\n---\nAnswer:\n")
     print(answer)
