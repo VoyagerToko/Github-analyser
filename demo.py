@@ -66,7 +66,7 @@ def determine_query_type(query: str) -> str:
     Determine the type of query to select appropriate LLM.
     Returns: 'code', 'math', or 'general'
     """
-    log.info(f"🔍 Analyzing query type for: {query}")
+    log.info(f"[ANALYZE] Analyzing query type for: {query}")
     
     # Code-related indicators
     code_indicators = [
@@ -103,7 +103,7 @@ def get_appropriate_llm(query: str):
         'general': general_llm
     }.get(query_type, general_llm)
     
-    log.info(f"🤖 Selected LLM for query type '{query_type}': {selected_llm.model}")
+    log.info(f"[LLM] Selected LLM for query type '{query_type}': {selected_llm.model}")
     return selected_llm
 
 # ---------------------------------
@@ -135,10 +135,13 @@ def get_conversation_response(text: str, current_llm: ChatOllama, context: str =
     
     if context:
         prompt = (
-            f"{base_prompt}\n\n"
+            "You are a helpful AI assistant. Answer the user's question using PRIMARILY the provided context information from web search results. "
+            "The context contains factual information gathered from reliable sources. Base your answer on this context first and foremost.\n\n"
             f"{history_str}\n"
-            f"Context information:\n{context}\n\n"
-            f"User: {text}\n"
+            f"SEARCH RESULTS AND CONTEXT:\n{context}\n\n"
+            f"User Question: {text}\n\n"
+            "Instructions: Answer based on the search results above. If the search results don't contain enough information, say so clearly. "
+            "Include source references when possible.\n\n"
             "Assistant:"
         )
     else:
@@ -191,55 +194,6 @@ def needs_search(text: str) -> bool:
     # Search if it contains search indicators
     return any(i in text_lower for i in search_indicators)
 
-def get_conversation_response(text: str, llm: ChatOllama, context: str = None) -> str:
-    """Generate a conversational response without web search."""
-    global conversation_history
-    
-    base_prompt = (
-        "You are a helpful and friendly AI assistant powered by Ollama models (Mistral, CodeLlama, or Llama2). "
-        "Respond to the user's message in a natural, conversational way. "
-        "Keep the response concise and engaging. When asked about your identity, explain which Ollama model you're using based on the query type. "
-        "Use the conversation history to maintain context and provide more relevant responses."
-    )
-    
-    # Build conversation history string
-    history_str = ""
-    if conversation_history:
-        history_str = "Previous conversation:\n"
-        for turn in conversation_history:
-            history_str += f"User: {turn['user']}\n"
-            history_str += f"Assistant: {turn['assistant']}\n"
-    
-    if context:
-        prompt = (
-            f"{base_prompt}\n\n"
-            f"{history_str}\n"
-            f"Context information:\n{context}\n\n"
-            f"User: {text}\n"
-            "Assistant:"
-        )
-    else:
-        prompt = (
-            f"{base_prompt}\n\n"
-            f"{history_str}\n"
-            f"User: {text}\n"
-            "Assistant:"
-        )
-        
-    response = llm.invoke(prompt)
-    response_text = response.content.strip()
-    
-    # Update conversation history
-    conversation_history.append({
-        'user': text,
-        'assistant': response_text
-    })
-    
-    # Keep only the last MAX_HISTORY_LENGTH turns
-    if len(conversation_history) > MAX_HISTORY_LENGTH:
-        conversation_history = conversation_history[-MAX_HISTORY_LENGTH:]
-    
-    return response_text
 
 # ---------------------------------
 # CONFIG
@@ -270,9 +224,9 @@ def analyze_github_repo(url: str, query: str = "") -> Tuple[str, Optional[str]]:
 
         # Extract repository information
         temp_dir = tempfile.mkdtemp()
-        log.info(f"🔍 Cloning repository: {url}")
+        log.info(f"[REPO] Cloning repository: {url}")
         repo = git.Repo.clone_from(url, temp_dir)
-        log.info(f"✅ Repository cloned to: {temp_dir}")
+        log.info(f"[REPO] Repository cloned to: {temp_dir}")
         
         # Process the query to understand what user wants to analyze
         analyze_prompt = (
@@ -286,7 +240,7 @@ def analyze_github_repo(url: str, query: str = "") -> Tuple[str, Optional[str]]:
             "Format: Simple text with key points"
         )
         analysis_request = code_llm.invoke(analyze_prompt).content
-        log.info(f"🎯 Analysis focus: {analysis_request}")
+        log.info(f"[ANALYSIS] Analysis focus: {analysis_request}")
 
         # Initialize repository context
         repo_context = {
@@ -375,57 +329,6 @@ def analyze_github_repo(url: str, query: str = "") -> Tuple[str, Optional[str]]:
 
     except Exception as e:
         return "Error", f"Failed to analyze repository: {str(e)}"
-        
-        if not code_files:
-            return "Error", f"No code files found in {'the specified folder' if target_folder else 'the repository'}."
-        
-        # Build folder structure
-        structure = []
-        for file in base_path.rglob("*"):
-            if file.is_file() and not any(p.startswith('.') for p in file.parts):  # Skip hidden files/folders
-                rel_path = file.relative_to(base_path)
-                structure.append(str(rel_path))
-        
-        prompt = (
-            "You are a software engineering expert analyzing a GitHub repository.\n"
-            f"{'Analyzing specific folder: ' + target_folder if target_folder else 'Analyzing entire repository'}\n\n"
-            "Folder structure:\n" + "\n".join(f"- {p}" for p in sorted(structure)) + "\n\n"
-            "Code files content:\n"
-        )
-        
-        for file in code_files:
-            try:
-                with open(file, 'r', encoding='utf-8', errors='ignore') as f:
-                    content = f.read()[:2000]  # Read first 2000 chars of each file
-                rel_path = file.relative_to(base_path)
-                prompt += f"\nFile: {rel_path}\n```\n{content}\n```\n"
-            except Exception as e:
-                log.error(f"Error reading {file}: {e}")
-        
-        prompt += "\nProvide:\n"
-        if target_folder:
-            prompt += (
-                f"1. Detailed analysis of the {target_folder} folder contents and purpose\n"
-                "2. Key functions and features implemented in this folder\n"
-                "3. Dependencies and relationships with other parts of the codebase\n"
-                "4. Code quality assessment\n"
-                "5. Potential improvements specific to this folder"
-            )
-        else:
-            prompt += (
-                "1. Overview of the repository structure and purpose\n"
-                "2. Main technologies used\n"
-                "3. Key features implemented\n"
-                "4. Code quality assessment\n"
-                "5. Potential improvements"
-            )
-        
-        # Always use code_llm for repository analysis
-        response = code_llm.invoke(prompt)
-        return "Repository Analysis", response.content
-
-    except Exception as e:
-        return "Error", f"Failed to analyze repository: {str(e)}"
 
 def is_casual_conversation(text: str) -> bool:
     """Determine if this is casual conversation vs. an information-seeking query."""
@@ -439,11 +342,10 @@ def is_casual_conversation(text: str) -> bool:
     ]
     text = text.lower().strip()
     return any(re.match(pattern, text) for pattern in casual_patterns)
-    return response.content.strip()
 
 def should_search_web(question: str) -> bool:
     """Determine if the question requires web search for accurate answer."""
-    log.info("🌐 Evaluating if web search is needed")
+    log.info("[WEB] Evaluating if web search is needed")
     current_llm = get_appropriate_llm(question)
     
     prompt = (
@@ -469,10 +371,10 @@ def generate_search_queries(question: str) -> List[str]:
     Uses the LLM to generate search queries or handle GitHub repository analysis.
     Can handle regular web searches or detailed GitHub repository analysis requests.
     """
-    log.info("🎯 Generating search queries")
+    log.info("[SEARCH] Generating search queries")
     # First check if this is casual conversation
     if is_casual_conversation(question):
-        log.info("💬 Detected casual conversation")
+        log.info("[CHAT] Detected casual conversation")
         return ["conversation:" + question]
 
     # Check if this is a GitHub repository analysis request
@@ -596,35 +498,61 @@ def limit_total_text(pages: List[Tuple[str, str]], cap: int) -> List[Tuple[str, 
 # Search using DuckDuckGo
 # ---------------------------------
 async def duckduckgo_search(query: str, max_results: int = 5) -> List[str]:
-    """DuckDuckGo search with stable waits and retry loop."""
+    """DuckDuckGo search with optimized performance and anti-detection."""
     results: List[str] = []
     try:
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=HEADLESS)
+            browser = await p.chromium.launch(
+                headless=HEADLESS,
+                args=[
+                    '--no-sandbox',
+                    '--disable-blink-features=AutomationControlled',
+                    '--disable-dev-shm-usage'
+                ]
+            )
             page = await browser.new_page(user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+                "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             ))
+            
+            # Set additional headers to appear more human-like
+            await page.set_extra_http_headers({
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+            })
 
-            log.info(f"🌐 Searching DuckDuckGo for: {query}")
-            await page.goto("https://duckduckgo.com", wait_until="networkidle", timeout=60000)
-
-            # Enter query
+            log.info(f"[SEARCH] Searching DuckDuckGo for: {query}")
+            
+            # Add random delay to avoid rate limiting
+            import random
+            await page.wait_for_timeout(random.randint(1000, 3000))
+            
+            await page.goto("https://duckduckgo.com", wait_until="domcontentloaded", timeout=30000)
+            
+            # Wait for search box to be ready
+            await page.wait_for_selector("input[name='q']", timeout=5000)
+            await page.wait_for_timeout(500)
+            
+            # Enter query with human-like typing
             await page.fill("input[name='q']", query)
+            await page.wait_for_timeout(500)
             await page.keyboard.press("Enter")
 
-            # Wait for results container
+            # Wait for results with shorter timeout
             try:
-                await page.wait_for_selector("div#links", timeout=10000)
+                await page.wait_for_selector("div#links, .results", timeout=8000)
             except Exception:
-                log.warning("⚠️ DuckDuckGo results not found immediately, retrying 2s...")
-                await page.wait_for_timeout(2000)
+                log.warning("[WARNING] DuckDuckGo results not found, trying alternative selectors...")
+                await page.wait_for_timeout(1000)
 
-            # Grab all result links
+            # Try multiple selectors for result links
             links = await page.query_selector_all("a[data-testid='result-title-a']")
             if not links:
-                # Fallback for older layouts
                 links = await page.query_selector_all("a.result__a")
+            if not links:
+                links = await page.query_selector_all(".result__title a")
+            if not links:
+                links = await page.query_selector_all("h3 a")
 
             for link in links:
                 href = await link.get_attribute("href")
@@ -637,7 +565,7 @@ async def duckduckgo_search(query: str, max_results: int = 5) -> List[str]:
             return results
 
     except Exception as e:
-        log.error(f"❌ DuckDuckGo search failed: {e}")
+        log.error(f"[ERROR] DuckDuckGo search failed: {e}")
         return []
 
 
@@ -655,7 +583,7 @@ async def scrape_pages(urls: List[str]) -> List[Tuple[str, str]]:
         ))
         for url in urls:
             try:
-                log.info(f"🧭 Visiting {url}")
+                log.info(f"[SCRAPE] Visiting {url}")
                 await page.goto(url, timeout=45000, wait_until="load")
                 # small wait for lazy content
                 await page.wait_for_timeout(1200)
@@ -665,9 +593,9 @@ async def scrape_pages(urls: List[str]) -> List[Tuple[str, str]]:
                 if not text:
                     text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
                 contents.append((url, text))
-                log.info(f"✅ Scraped {len(text)} chars from: {url}")
+                log.info(f"[SCRAPE] Scraped {len(text)} chars from: {url}")
             except Exception as e:
-                log.warning(f"⚠️ Failed to scrape {url}: {e}")
+                log.warning(f"[WARNING] Failed to scrape {url}: {e}")
         await browser.close()
     return contents
 
@@ -765,7 +693,7 @@ async def main():
         if not user_question:
             continue
             
-        log.info(f"🧠 Original input: {user_question}")
+        log.info(f"[INPUT] Original input: {user_question}")
         
         # Handle farewells
         if is_farewell(user_question):
@@ -784,7 +712,7 @@ async def main():
             continue
             
         # For questions needing search, proceed with query generation
-        log.info("🔍 Generating search queries for information retrieval...")
+        log.info("[SEARCH] Generating search queries for information retrieval...")
         queries = generate_search_queries(user_question)
         
         if not queries:
@@ -802,7 +730,7 @@ async def main():
                 
             elif first_query.startswith("direct_answer:"):
                 question = first_query.split(":", 1)[1]
-                response = get_direct_answer(question, current_llm)
+                response = get_direct_answer(question)
                 print(f"\n💬 AI Assistant: {response}\n")
                 
             elif first_query.startswith("analyzing_github_repo:"):
@@ -812,8 +740,8 @@ async def main():
                 else:
                     repo_url, query = repo_info, user_question
                     
-                log.info(f"🔍 Analyzing repository: {repo_url}")
-                log.info(f"🔍 Analysis query: {query}")
+                log.info(f"[REPO] Analyzing repository: {repo_url}")
+                log.info(f"[REPO] Analysis query: {query}")
                 
                 title, analysis = analyze_github_repo(repo_url, query)
                 response = get_conversation_response(user_question, code_llm, context=analysis)
@@ -823,7 +751,7 @@ async def main():
                 # Regular web search
                 all_urls = []
                 for query in queries:
-                    log.info(f"🔎 Searching for: {query}")
+                    log.info(f"[SEARCH] Searching for: {query}")
                     raw = await duckduckgo_search(query, MAX_LINKS)
                     urls = normalize_urls(raw, "duckduckgo")
                     all_urls.extend(urls)
@@ -838,7 +766,7 @@ async def main():
                     print(f"\n💬 AI Assistant: I couldn't find specific information online, but {response}\n")
                     continue
 
-                log.info(f"🔗 Using {len(urls)} URL(s)")
+                log.info(f"[SCRAPE] Using {len(urls)} URL(s)")
                 pages = await scrape_pages(urls)
                 
                 if not pages:
@@ -863,6 +791,14 @@ async def main():
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
     try:
+        # Handle simple system/health check requests
+        if request.message.strip().lower() in ['ping', 'test', 'hello', 'hi']:
+            return {
+                "response": "pong" if request.message.strip().lower() == "ping" else "Hello! I'm ready to help.",
+                "model": "system",
+                "action": "health_check"
+            }
+        
         # First determine the appropriate model and action based on the message content
         query_type = determine_query_type(request.message)
         model_map = {

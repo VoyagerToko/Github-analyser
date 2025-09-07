@@ -20,3 +20,309 @@
 2025-09-07 16:49:26,309 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 2025-09-07 16:50:42,278 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 2025-09-07 16:50:42,471 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:19:59,594 - INFO - [ANALYZE] Analyzing query type for: ping
+2025-09-07 21:19:59,595 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:19:59,595 - INFO - [ANALYZE] Analyzing query type for: ping
+2025-09-07 21:19:59,595 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:04,289 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:04,387 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:20:04,387 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:20:04,387 - INFO - [ANALYZE] Analyzing query type for: ping
+2025-09-07 21:20:04,388 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:04,444 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:04,496 - INFO - [ANALYZE] Analyzing query type for: ping
+2025-09-07 21:20:04,496 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:04,681 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:07,140 - INFO - [ANALYZE] Analyzing query type for: hi
+2025-09-07 21:20:07,140 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:20:07,141 - INFO - [ANALYZE] Analyzing query type for: hi
+2025-09-07 21:20:07,141 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:07,343 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:07,568 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:13,584 - INFO - [SEARCH] Searching DuckDuckGo for: Ping (network tool)
+2025-09-07 21:20:26,808 - INFO - [ANALYZE] Analyzing query type for: whats the top smartphone on flipcart rn
+2025-09-07 21:20:26,809 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:20:26,809 - INFO - [ANALYZE] Analyzing query type for: whats the top smartphone on flipcart rn
+2025-09-07 21:20:26,809 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:27,269 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:27,365 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:20:27,365 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:20:27,365 - INFO - [ANALYZE] Analyzing query type for: whats the top smartphone on flipcart rn
+2025-09-07 21:20:27,365 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:27,421 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:27,514 - INFO - [ANALYZE] Analyzing query type for: whats the top smartphone on flipcart rn
+2025-09-07 21:20:27,514 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:20:27,691 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:20:30,777 - INFO - [SEARCH] Searching DuckDuckGo for: Best-selling smartphones on Flipkart currently
+2025-09-07 21:20:36,775 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:20:39,833 - INFO - [SEARCH] Searching DuckDuckGo for: What is Ping in computer networking?
+2025-09-07 21:20:54,442 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:20:57,638 - INFO - [SEARCH] Searching DuckDuckGo for: Top rated smartphones available on Flipkart
+2025-09-07 21:21:13,705 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:21:16,811 - INFO - [SCRAPE] Visiting https://ping-tool.com/
+2025-09-07 21:21:30,802 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:21:33,866 - INFO - [SCRAPE] Visiting https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:21:44,975 - INFO - [SCRAPE] Scraped 1983 chars from: https://ping-tool.com/
+2025-09-07 21:21:44,975 - INFO - [SCRAPE] Visiting https://geekflare.com/cloud/ping-monitoring-tools/
+2025-09-07 21:21:51,990 - INFO - [SCRAPE] Scraped 0 chars from: https://geekflare.com/cloud/ping-monitoring-tools/
+2025-09-07 21:21:51,990 - INFO - [SCRAPE] Visiting https://pingtool.org/
+2025-09-07 21:21:58,956 - INFO - [SCRAPE] Scraped 50 chars from: https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:21:58,956 - INFO - [SCRAPE] Visiting https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:22:12,950 - INFO - [SCRAPE] Scraped 44 chars from: https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:22:12,950 - INFO - [SCRAPE] Visiting https://www.paisawapas.com/blog/top-mobile-offers-on-flipkart-big-billion-day-sale/
+2025-09-07 21:22:14,982 - INFO - [SCRAPE] Scraped 223 chars from: https://pingtool.org/
+2025-09-07 21:22:15,235 - INFO - [ANALYZE] Analyzing query type for: ping
+2025-09-07 21:22:15,235 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:22:15,864 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:22:27,682 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:22:37,325 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:22:48,332 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:22:54,049 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:23:04,146 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:23:13,580 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:23:20,416 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:24:19,782 - INFO - [ANALYZE] Analyzing query type for: what
+2025-09-07 21:24:19,783 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:24:19,783 - INFO - [ANALYZE] Analyzing query type for: what
+2025-09-07 21:24:19,783 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:24:20,178 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:24:20,431 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:24:32,778 - INFO - [ANALYZE] Analyzing query type for: helo
+2025-09-07 21:24:32,778 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:24:32,778 - INFO - [ANALYZE] Analyzing query type for: helo
+2025-09-07 21:24:32,778 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:24:33,165 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:24:33,454 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:25:18,225 - INFO - [ANALYZE] Analyzing query type for: what is the top selling phone on amazon rn
+2025-09-07 21:25:18,225 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:25:18,226 - INFO - [ANALYZE] Analyzing query type for: what is the top selling phone on amazon rn
+2025-09-07 21:25:18,226 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:25:18,592 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:25:18,692 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:25:18,693 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:25:18,693 - INFO - [ANALYZE] Analyzing query type for: what is the top selling phone on amazon rn
+2025-09-07 21:25:18,693 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:25:18,756 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:25:18,865 - INFO - [ANALYZE] Analyzing query type for: what is the top selling phone on amazon rn
+2025-09-07 21:25:18,866 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:25:19,073 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:25:22,094 - INFO - [SEARCH] Searching DuckDuckGo for: Top-selling phones on Amazon currently
+2025-09-07 21:25:36,606 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:25:39,835 - INFO - [SEARCH] Searching DuckDuckGo for: Best-sellers in mobile phones on Amazon
+2025-09-07 21:25:54,518 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:25:57,883 - INFO - [SCRAPE] Visiting https://www.amazon.com/Best-Sellers-Cell-Phones/zgbs/wireless/7072561011
+2025-09-07 21:25:58,627 - WARNING - [WARNING] Failed to scrape https://www.amazon.com/Best-Sellers-Cell-Phones/zgbs/wireless/7072561011: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.amazon.com/Best-Sellers-Cell-Phones/zgbs/wireless/7072561011
+Call log:
+  - navigating to "https://www.amazon.com/Best-Sellers-Cell-Phones/zgbs/wireless/7072561011", waiting until "load"
+
+2025-09-07 21:25:58,627 - INFO - [SCRAPE] Visiting https://www.accio.com/business/best_selling_mobile_phones_amazon
+2025-09-07 21:26:08,521 - WARNING - [WARNING] Failed to scrape https://www.accio.com/business/best_selling_mobile_phones_amazon: Page.goto: Navigation to "https://www.accio.com/business/best_selling_mobile_phones_amazon" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://www.accio.com/business/best_selling_mobile_phones_amazon", waiting until "load"
+
+2025-09-07 21:26:08,521 - INFO - [SCRAPE] Visiting https://www.pcmag.com/news/best-smartphone-deals-still-available-amazon-prime-day-2025
+2025-09-07 21:26:12,853 - WARNING - [WARNING] Failed to scrape https://www.pcmag.com/news/best-smartphone-deals-still-available-amazon-prime-day-2025: Page.goto: Navigation to "https://www.pcmag.com/news/best-smartphone-deals-still-available-amazon-prime-day-2025" is interrupted by another navigation to "https://www.accio.com/business/best_selling_mobile_phones_amazon"
+Call log:
+  - navigating to "https://www.pcmag.com/news/best-smartphone-deals-still-available-amazon-prime-day-2025", waiting until "load"
+
+2025-09-07 21:26:13,616 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:28:59,185 - INFO - [ANALYZE] Analyzing query type for: what is top selling phone on flipcart rn
+2025-09-07 21:28:59,186 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:28:59,186 - INFO - [ANALYZE] Analyzing query type for: what is top selling phone on flipcart rn
+2025-09-07 21:28:59,186 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:28:59,470 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:28:59,558 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:28:59,558 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:28:59,558 - INFO - [ANALYZE] Analyzing query type for: what is top selling phone on flipcart rn
+2025-09-07 21:28:59,558 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:28:59,614 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:28:59,709 - INFO - [ANALYZE] Analyzing query type for: what is top selling phone on flipcart rn
+2025-09-07 21:28:59,709 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:28:59,895 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:29:02,804 - INFO - [SEARCH] Searching DuckDuckGo for: Flipkart best-sellers phone - current rankings
+2025-09-07 21:29:17,186 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:29:20,250 - INFO - [SEARCH] Searching DuckDuckGo for: Top smartphones currently sold on Flipkart
+2025-09-07 21:29:38,656 - WARNING - [WARNING] DuckDuckGo results not found immediately, retrying 2s...
+2025-09-07 21:29:41,766 - INFO - [SCRAPE] Visiting https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:29:50,604 - INFO - [SCRAPE] Scraped 50 chars from: https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:29:50,604 - INFO - [SCRAPE] Visiting https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:29:55,631 - INFO - [SCRAPE] Scraped 44 chars from: https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:29:55,631 - INFO - [SCRAPE] Visiting https://www.gizbot.com/deal-of-the-day/flipkart-big-billion-days-2025-sale-top-smartphones-to-keep-on-your-wishlist-011-118329.html
+2025-09-07 21:30:19,799 - INFO - [SCRAPE] Scraped 94 chars from: https://www.gizbot.com/deal-of-the-day/flipkart-big-billion-days-2025-sale-top-smartphones-to-keep-on-your-wishlist-011-118329.html
+2025-09-07 21:30:20,123 - INFO - [ANALYZE] Analyzing query type for: what is top selling phone on flipcart rn
+2025-09-07 21:30:20,123 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:30:20,505 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:27,379 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:31,093 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:33,733 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:39,348 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:47,382 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:30:57,248 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:31:08,112 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:52:26,315 - INFO - [ANALYZE] Analyzing query type for: top phones on flipcart
+2025-09-07 21:52:26,315 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:52:26,315 - INFO - [ANALYZE] Analyzing query type for: top phones on flipcart
+2025-09-07 21:52:26,315 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:52:30,846 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:52:30,932 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:52:30,932 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:52:30,932 - INFO - [ANALYZE] Analyzing query type for: top phones on flipcart
+2025-09-07 21:52:30,933 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:52:30,988 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:52:31,071 - INFO - [ANALYZE] Analyzing query type for: top phones on flipcart
+2025-09-07 21:52:31,071 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:52:31,244 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:52:36,671 - INFO - [SEARCH] Searching DuckDuckGo for: Flipkart best-selling smartphones
+2025-09-07 21:52:53,743 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 21:52:55,864 - INFO - [SEARCH] Searching DuckDuckGo for: Top-rated phones on Flipkart
+2025-09-07 21:53:11,695 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 21:53:13,815 - INFO - [SCRAPE] Visiting https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:53:30,377 - INFO - [SCRAPE] Scraped 50 chars from: https://candytech.in/10-best-selling-smartphones-flipkart-and-amazon/
+2025-09-07 21:53:30,377 - INFO - [SCRAPE] Visiting https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:53:39,155 - INFO - [SCRAPE] Scraped 44 chars from: https://www.flipkart.com/mobile-phones-store
+2025-09-07 21:53:39,155 - INFO - [SCRAPE] Visiting https://www.fonearena.com/blog/435860/flipkart-big-billion-days-2024-biggest-deals-on-smartphones-that-you-cant-miss.html
+2025-09-07 21:53:56,733 - INFO - [SCRAPE] Scraped 80 chars from: https://www.fonearena.com/blog/435860/flipkart-big-billion-days-2024-biggest-deals-on-smartphones-that-you-cant-miss.html
+2025-09-07 21:53:57,079 - INFO - [ANALYZE] Analyzing query type for: top phones on flipcart
+2025-09-07 21:53:57,079 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:53:57,500 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:05,911 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:10,958 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:13,438 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:19,692 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:24,617 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:29,097 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:54:48,517 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:56:08,886 - INFO - [ANALYZE] Analyzing query type for: couldnt u access the site urself?
+2025-09-07 21:56:08,887 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:56:08,887 - INFO - [ANALYZE] Analyzing query type for: couldnt u access the site urself?
+2025-09-07 21:56:08,887 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:56:09,286 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:56:09,663 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:56:58,917 - INFO - [ANALYZE] Analyzing query type for: what is the latest big international news
+2025-09-07 21:56:58,918 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:56:58,918 - INFO - [ANALYZE] Analyzing query type for: what is the latest big international news
+2025-09-07 21:56:58,918 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:56:59,281 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:56:59,372 - INFO - [SEARCH] Generating search queries
+2025-09-07 21:56:59,373 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 21:56:59,373 - INFO - [ANALYZE] Analyzing query type for: what is the latest big international news
+2025-09-07 21:56:59,373 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:56:59,426 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:56:59,509 - INFO - [ANALYZE] Analyzing query type for: what is the latest big international news
+2025-09-07 21:56:59,509 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:56:59,681 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:57:02,157 - INFO - [SEARCH] Searching DuckDuckGo for: Recent major international news headlines
+2025-09-07 21:57:15,306 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 21:57:17,385 - INFO - [SEARCH] Searching DuckDuckGo for: Latest breaking international news events
+2025-09-07 21:57:32,687 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 21:57:34,738 - INFO - [SCRAPE] Visiting https://duckduckgo.com/y.js?ad_domain=thehindu.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=PY1LBDXoopu%2DM3fQTnmQfW1QG%2D5OU7jPgA4F6HyFfBEWxXTnKMSpgVKFj8uE5FR02mEqDnqIKzyguwUmDUHnOEzTRh2pJTaMrqPmmH49hx2BetO3xxx8bjDf_ik7oNOz.9d7W1MwMuflOGbTq9i7BzQ&eddgt=VzxnwrTcIbylGPxRnQ40Ew%3D%3D&rut=c8cedc8735f40f022cc903aa09da0a8ece6f10a4715dbce0f184f7aa8ea690b4&u3=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8No7zHjs2BWEW_SRNpDTZEjVUCUzf9Uu6w5WDAjhs8iEhN_OLHiHEs4trVFQViZsILurGgeoePCiRmgyPSzl4ilu94FMnEp1j00DGGfzdTrkOUe85om95GPd6c9UfCmGgkuXtFJW%2D%2DvO5dDx9g3bsh3LGLlmDT15Ha0ch1Fq8FS1JjGO1D2ZTWY_s5LHTAmIghPYq4Q%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cudGhlaGluZHUuY29tJTJmc3Vic2NyaXB0aW9uJTJmY2FtcGFpZ24lMmYlM2Z0cGNjJTNkQkdUSE5CJTI2bXNjbGtpZCUzZGMyMTM4ZWZhY2NlNTFjODU1MjdiZTY0NzdlYmVlYTRhJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkVEhELUdlbmVyaWMtU2VhcmNoLU1hciUyNnV0bV90ZXJtJTNkaW50ZXJuYXRpb25hbCUyNTIwaGVhZGxpbmVzJTI1MjB0b2RheSUyNnV0bV9jb250ZW50JTNkQWQlMjUyMEdyb3VwJTI1MjAx%26rlid%3Dc2138efacce51c85527be6477ebeea4a&vqd=4-256673338579197386720968819892665983508&iurl=%7B1%7DIG%3D3E2C0F6BF6B147D797DC297634492D7B%26CID%3D23E8E3F3BEAB60E6249EF593BFCF610F%26ID%3DDevEx%2C5046.1
+2025-09-07 21:57:41,320 - INFO - [SCRAPE] Scraped 153 chars from: https://duckduckgo.com/y.js?ad_domain=thehindu.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=PY1LBDXoopu%2DM3fQTnmQfW1QG%2D5OU7jPgA4F6HyFfBEWxXTnKMSpgVKFj8uE5FR02mEqDnqIKzyguwUmDUHnOEzTRh2pJTaMrqPmmH49hx2BetO3xxx8bjDf_ik7oNOz.9d7W1MwMuflOGbTq9i7BzQ&eddgt=VzxnwrTcIbylGPxRnQ40Ew%3D%3D&rut=c8cedc8735f40f022cc903aa09da0a8ece6f10a4715dbce0f184f7aa8ea690b4&u3=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8No7zHjs2BWEW_SRNpDTZEjVUCUzf9Uu6w5WDAjhs8iEhN_OLHiHEs4trVFQViZsILurGgeoePCiRmgyPSzl4ilu94FMnEp1j00DGGfzdTrkOUe85om95GPd6c9UfCmGgkuXtFJW%2D%2DvO5dDx9g3bsh3LGLlmDT15Ha0ch1Fq8FS1JjGO1D2ZTWY_s5LHTAmIghPYq4Q%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cudGhlaGluZHUuY29tJTJmc3Vic2NyaXB0aW9uJTJmY2FtcGFpZ24lMmYlM2Z0cGNjJTNkQkdUSE5CJTI2bXNjbGtpZCUzZGMyMTM4ZWZhY2NlNTFjODU1MjdiZTY0NzdlYmVlYTRhJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkVEhELUdlbmVyaWMtU2VhcmNoLU1hciUyNnV0bV90ZXJtJTNkaW50ZXJuYXRpb25hbCUyNTIwaGVhZGxpbmVzJTI1MjB0b2RheSUyNnV0bV9jb250ZW50JTNkQWQlMjUyMEdyb3VwJTI1MjAx%26rlid%3Dc2138efacce51c85527be6477ebeea4a&vqd=4-256673338579197386720968819892665983508&iurl=%7B1%7DIG%3D3E2C0F6BF6B147D797DC297634492D7B%26CID%3D23E8E3F3BEAB60E6249EF593BFCF610F%26ID%3DDevEx%2C5046.1
+2025-09-07 21:57:41,320 - INFO - [SCRAPE] Visiting https://www.bbc.com/news/world
+2025-09-07 21:58:02,276 - INFO - [SCRAPE] Scraped 54 chars from: https://www.bbc.com/news/world
+2025-09-07 21:58:02,276 - INFO - [SCRAPE] Visiting https://apnews.com/world-news
+2025-09-07 21:58:25,091 - INFO - [SCRAPE] Scraped 0 chars from: https://apnews.com/world-news
+2025-09-07 21:58:25,436 - INFO - [ANALYZE] Analyzing query type for: what is the latest big international news
+2025-09-07 21:58:25,436 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 21:58:26,823 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:58:30,665 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:58:39,820 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:58:56,817 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:58:59,553 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:59:07,124 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:59:22,444 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 21:59:34,093 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:00:24,115 - INFO - [ANALYZE] Analyzing query type for: write a code for implimenting best first search on c
+2025-09-07 22:00:24,116 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 22:00:24,116 - INFO - [ANALYZE] Analyzing query type for: write a code for implimenting best first search on c
+2025-09-07 22:00:24,116 - INFO - [LLM] Selected LLM for query type 'code': codellama
+2025-09-07 22:00:28,988 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:00:29,055 - INFO - [SEARCH] Generating search queries
+2025-09-07 22:00:29,055 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 22:00:29,055 - INFO - [ANALYZE] Analyzing query type for: write a code for implimenting best first search on c
+2025-09-07 22:00:29,055 - INFO - [LLM] Selected LLM for query type 'code': codellama
+2025-09-07 22:00:29,131 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:00:30,270 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:05:53,467 - INFO - [ANALYZE] Analyzing query type for: On an otherwise deserted and isolated island, 200 perfect logicians are stranded. The islanders are perfectly logical in every decision they make, and they will not do anything unless they are absolutely certain of the outcome. However, they cannot communicate with each other. They are forbidden from speaking with one another, or signing, or writing messages in the sand, else they be shot dead by the captain of a mysterious ship that visits the island each night.
+Of the 200 islanders, 100 have blue eyes, and 100 have brown eyes. However, no individual knows what color their own eyes are. There are no reflective surfaces on the island for the inhabitants to see a reflection of their own eyes. They can each see the 199 other islanders and their eye colors, but any given individual does not know if his or her own eyes are brown, blue, or perhaps another color entirely. And remember, they cannot communicate with each other in any way under penalty of death.
+
+Each night, when the captain of the ship comes, the islanders have a chance to leave the barren and desolate spit of land they have been marooned on. If an islander tells the captain the color of his or her own eyes, they may board the ship and leave. If they get it wrong, they will be shot dead.
+
+Now, there is one more person on the island: the guru, who the islanders know to always tell the truth. The guru has green eyes. One day, she stands up before all 200 islanders and says:
+
+I see a person with blue eyes.
+
+Who leaves the island? And when do they leave?
+2025-09-07 22:05:53,468 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 22:05:53,468 - INFO - [ANALYZE] Analyzing query type for: On an otherwise deserted and isolated island, 200 perfect logicians are stranded. The islanders are perfectly logical in every decision they make, and they will not do anything unless they are absolutely certain of the outcome. However, they cannot communicate with each other. They are forbidden from speaking with one another, or signing, or writing messages in the sand, else they be shot dead by the captain of a mysterious ship that visits the island each night.
+Of the 200 islanders, 100 have blue eyes, and 100 have brown eyes. However, no individual knows what color their own eyes are. There are no reflective surfaces on the island for the inhabitants to see a reflection of their own eyes. They can each see the 199 other islanders and their eye colors, but any given individual does not know if his or her own eyes are brown, blue, or perhaps another color entirely. And remember, they cannot communicate with each other in any way under penalty of death.
+
+Each night, when the captain of the ship comes, the islanders have a chance to leave the barren and desolate spit of land they have been marooned on. If an islander tells the captain the color of his or her own eyes, they may board the ship and leave. If they get it wrong, they will be shot dead.
+
+Now, there is one more person on the island: the guru, who the islanders know to always tell the truth. The guru has green eyes. One day, she stands up before all 200 islanders and says:
+
+I see a person with blue eyes.
+
+Who leaves the island? And when do they leave?
+2025-09-07 22:05:53,468 - INFO - [LLM] Selected LLM for query type 'math': llama2
+2025-09-07 22:05:58,332 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:05:58,428 - INFO - [SEARCH] Generating search queries
+2025-09-07 22:05:58,429 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 22:05:58,429 - INFO - [ANALYZE] Analyzing query type for: On an otherwise deserted and isolated island, 200 perfect logicians are stranded. The islanders are perfectly logical in every decision they make, and they will not do anything unless they are absolutely certain of the outcome. However, they cannot communicate with each other. They are forbidden from speaking with one another, or signing, or writing messages in the sand, else they be shot dead by the captain of a mysterious ship that visits the island each night.
+Of the 200 islanders, 100 have blue eyes, and 100 have brown eyes. However, no individual knows what color their own eyes are. There are no reflective surfaces on the island for the inhabitants to see a reflection of their own eyes. They can each see the 199 other islanders and their eye colors, but any given individual does not know if his or her own eyes are brown, blue, or perhaps another color entirely. And remember, they cannot communicate with each other in any way under penalty of death.
+
+Each night, when the captain of the ship comes, the islanders have a chance to leave the barren and desolate spit of land they have been marooned on. If an islander tells the captain the color of his or her own eyes, they may board the ship and leave. If they get it wrong, they will be shot dead.
+
+Now, there is one more person on the island: the guru, who the islanders know to always tell the truth. The guru has green eyes. One day, she stands up before all 200 islanders and says:
+
+I see a person with blue eyes.
+
+Who leaves the island? And when do they leave?
+2025-09-07 22:05:58,429 - INFO - [LLM] Selected LLM for query type 'math': llama2
+2025-09-07 22:05:58,524 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:05:58,596 - INFO - [ANALYZE] Analyzing query type for: On an otherwise deserted and isolated island, 200 perfect logicians are stranded. The islanders are perfectly logical in every decision they make, and they will not do anything unless they are absolutely certain of the outcome. However, they cannot communicate with each other. They are forbidden from speaking with one another, or signing, or writing messages in the sand, else they be shot dead by the captain of a mysterious ship that visits the island each night.
+Of the 200 islanders, 100 have blue eyes, and 100 have brown eyes. However, no individual knows what color their own eyes are. There are no reflective surfaces on the island for the inhabitants to see a reflection of their own eyes. They can each see the 199 other islanders and their eye colors, but any given individual does not know if his or her own eyes are brown, blue, or perhaps another color entirely. And remember, they cannot communicate with each other in any way under penalty of death.
+
+Each night, when the captain of the ship comes, the islanders have a chance to leave the barren and desolate spit of land they have been marooned on. If an islander tells the captain the color of his or her own eyes, they may board the ship and leave. If they get it wrong, they will be shot dead.
+
+Now, there is one more person on the island: the guru, who the islanders know to always tell the truth. The guru has green eyes. One day, she stands up before all 200 islanders and says:
+
+I see a person with blue eyes.
+
+Who leaves the island? And when do they leave?
+2025-09-07 22:05:58,597 - INFO - [LLM] Selected LLM for query type 'math': llama2
+2025-09-07 22:05:59,198 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:06:03,926 - INFO - [SEARCH] Searching DuckDuckGo for: Who is the person with blue eyes according to the guru's statement?
+2025-09-07 22:06:15,610 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 22:06:17,813 - INFO - [SEARCH] Searching DuckDuckGo for: When does the ship visit the island next?
+2025-09-07 22:06:30,969 - WARNING - [WARNING] DuckDuckGo results not found, trying alternative selectors...
+2025-09-07 22:06:33,045 - INFO - [SCRAPE] Visiting https://www.explainxkcd.com/wiki/index.php/Blue_Eyes
+2025-09-07 22:06:42,190 - INFO - [SCRAPE] Scraped 341 chars from: https://www.explainxkcd.com/wiki/index.php/Blue_Eyes
+2025-09-07 22:06:42,190 - INFO - [SCRAPE] Visiting https://medium.com/@peter.herdenborg/the-blue-eyed-islander-puzzle-9042b22bacb2
+2025-09-07 22:06:48,184 - INFO - [SCRAPE] Scraped 96 chars from: https://medium.com/@peter.herdenborg/the-blue-eyed-islander-puzzle-9042b22bacb2
+2025-09-07 22:06:48,185 - INFO - [SCRAPE] Visiting https://puzzling.stackexchange.com/questions/111778/blue-eyes-riddle-a-counter-argument-to-accepted-solution
+2025-09-07 22:07:21,258 - INFO - [SCRAPE] Scraped 103 chars from: https://puzzling.stackexchange.com/questions/111778/blue-eyes-riddle-a-counter-argument-to-accepted-solution
+2025-09-07 22:07:21,521 - INFO - [ANALYZE] Analyzing query type for: On an otherwise deserted and isolated island, 200 perfect logicians are stranded. The islanders are perfectly logical in every decision they make, and they will not do anything unless they are absolutely certain of the outcome. However, they cannot communicate with each other. They are forbidden from speaking with one another, or signing, or writing messages in the sand, else they be shot dead by the captain of a mysterious ship that visits the island each night.
+Of the 200 islanders, 100 have blue eyes, and 100 have brown eyes. However, no individual knows what color their own eyes are. There are no reflective surfaces on the island for the inhabitants to see a reflection of their own eyes. They can each see the 199 other islanders and their eye colors, but any given individual does not know if his or her own eyes are brown, blue, or perhaps another color entirely. And remember, they cannot communicate with each other in any way under penalty of death.
+
+Each night, when the captain of the ship comes, the islanders have a chance to leave the barren and desolate spit of land they have been marooned on. If an islander tells the captain the color of his or her own eyes, they may board the ship and leave. If they get it wrong, they will be shot dead.
+
+Now, there is one more person on the island: the guru, who the islanders know to always tell the truth. The guru has green eyes. One day, she stands up before all 200 islanders and says:
+
+I see a person with blue eyes.
+
+Who leaves the island? And when do they leave?
+2025-09-07 22:07:21,521 - INFO - [LLM] Selected LLM for query type 'math': llama2
+2025-09-07 22:07:22,723 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:07:32,798 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:07:44,464 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:07:57,346 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:08:04,237 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:08:10,980 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:08:19,982 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:08:49,401 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:10:14,696 - INFO - [ANALYZE] Analyzing query type for: thanks
+2025-09-07 22:10:14,696 - INFO - [WEB] Evaluating if web search is needed
+2025-09-07 22:10:14,696 - INFO - [ANALYZE] Analyzing query type for: thanks
+2025-09-07 22:10:14,696 - INFO - [LLM] Selected LLM for query type 'general': mistral
+2025-09-07 22:10:19,281 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-07 22:10:22,222 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
