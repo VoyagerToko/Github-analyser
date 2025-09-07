@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            height: calc(100vh - 180px);
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        .user-message {
+            background-color: #1e293b;
+            margin-left: auto;
+            border-radius: 15px 15px 0 15px;
+            max-width: 80%;
+        }
+        .assistant-message {
+            background-color: #1f2937;
+            margin-right: auto;
+            border-radius: 15px 15px 15px 0;
+            max-width: 80%;
+        }
+        .thinking {
+            animation: pulse 1.5s infinite;
+        }
+        .model-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+        }
+        .model-mistral { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .model-codellama { background-color: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .model-llama2 { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .action-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+            background-color: rgba(75, 85, 99, 0.2);
+            color: #9ca3af;
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        .textarea-container {
+            position: relative;
+            width: 100%;
+        }
+        .auto-resize-textarea {
+            min-height: 44px;
+            max-height: 200px;
+            resize: none;
+            overflow-y: auto;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background-color: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="border-b border-gray-800 bg-gray-900/80 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-purple-600">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-sm font-semibold text-white">AI Assistant</h1>
+                            <p class="text-xs text-gray-400">Multi-model AI powered chat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div id="connection-status" class="flex h-2 w-2 rounded-full bg-green-500"></div>
+                        <span class="text-xs text-gray-400">Connected</span>
+                        <div id="model-badge" class="model-badge model-mistral">
+                            <i class="fas fa-brain"></i>
+                            <span id="current-model">mistral</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div id="chat-container" class="chat-container flex-1 overflow-y-auto px-4 py-6">
+            <div id="welcome-screen" class="text-center">
+                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
+                    <i class="fas fa-robot text-2xl text-white"></i>
+                </div>
+                <h2 class="mb-3 text-2xl font-bold text-white">Welcome to AI Assistant</h2>
+                <p class="mb-8 text-gray-400">
+                    I'm powered by multiple Ollama models and can help with coding, math, and general questions.
+                </p>
+                <div class="welcome-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-brain mb-2 text-blue-400 text-xl"></i>
+                        <h3 class="font-medium text-white">Mistral</h3>
+                        <p class="text-sm text-gray-400">General conversation</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-code mb-2 text-green-400 text-xl"></i>
+                        <h3 class="font-medium text-white">CodeLlama</h3>
+                        <p class="text-sm text-gray-400">Programming help</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calculator mb-2 text-purple-400 text-xl"></i>
+                        <h3 class="font-medium text-white">Llama2</h3>
+                        <p class="text-sm text-gray-400">Math & logic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="border-t border-gray-800 bg-gray-900/80 backdrop-blur-sm">
+            <div class="container mx-auto max-w-4xl p-4">
+                <form id="chat-form" class="relative">
+                    <div class="relative flex items-end gap-3 rounded-xl border border-gray-700 bg-gray-800 p-3 focus-within:border-blue-500">
+                        <div class="textarea-container flex-1">
+                            <textarea
+                                id="user-input"
+                                class="auto-resize-textarea w-full bg-transparent text-sm text-white placeholder:text-gray-400 focus:outline-none"
+                                rows="1"
+                                placeholder="Ask me anything about coding, math, or general topics..."
+                            ></textarea>
+                        </div>
+                        
+                        <div class="flex shrink-0 items-center gap-2">
+                            <button
+                                type="submit"
+                                id="send-button"
+                                class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white transition-all duration-200 hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <i class="fas fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2 flex items-center justify-between text-xs text-gray-400">
+                        <span>Press Enter to send, Shift+Enter for new line</span>
+                        <span id="char-count">0/2000</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const modelBadge = document.getElementById('model-badge');
+        const currentModel = document.getElementById('current-model');
+        const charCount = document.getElementById('char-count');
+        let isProcessing = false;
+
+        // Auto-resize textarea
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+            charCount.textContent = `${this.value.length}/2000`;
+            sendButton.disabled = !this.value.trim();
+        });
+
+        function getModelColor(model) {
+            switch (model) {
+                case 'mistral': return 'model-mistral';
+                case 'codellama': return 'model-codellama';
+                case 'llama2': return 'model-llama2';
+                default: return 'model-mistral';
+            }
+        }
+
+        function getModelIcon(model) {
+            switch (model) {
+                case 'mistral': return 'fa-brain';
+                case 'codellama': return 'fa-code';
+                case 'llama2': return 'fa-calculator';
+                default: return 'fa-robot';
+            }
+        }
+
+        function updateModelBadge(model) {
+            modelBadge.className = `model-badge ${getModelColor(model)}`;
+            modelBadge.innerHTML = `<i class="fas ${getModelIcon(model)}"></i> ${model}`;
+        }
+
+        function createMessageElement(content, isUser, model = null, action = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'py-6 border-b border-gray-800 last:border-0';
+
+            const innerDiv = document.createElement('div');
+            innerDiv.className = 'flex gap-4';
+
+            // Avatar
+            const avatar = document.createElement('div');
+            avatar.className = `flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+                isUser ? 'bg-gray-700' : 'bg-gradient-to-r from-blue-500 to-purple-600'
+            }`;
+            avatar.innerHTML = `<i class="fas ${isUser ? 'fa-user' : 'fa-robot'} ${
+                isUser ? 'text-gray-300' : 'text-white'
+            } text-sm"></i>`;
+
+            // Content container
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'flex-1 space-y-2';
+
+            // Header with name and badges
+            const header = document.createElement('div');
+            header.className = 'flex items-center gap-2';
+            header.innerHTML = `
+                <span class="text-sm font-medium text-white">
+                    ${isUser ? 'You' : 'AI Assistant'}
+                </span>
+            `;
+
+            if (!isUser && model) {
+                const modelBadge = document.createElement('div');
+                modelBadge.className = `inline-flex items-center gap-1 model-badge ${getModelColor(model)}`;
+                modelBadge.innerHTML = `<i class="fas ${getModelIcon(model)}"></i> ${model}`;
+                header.appendChild(modelBadge);
+            }
+
+            if (!isUser && action) {
+                const actionBadge = document.createElement('div');
+                actionBadge.className = 'action-badge';
+                actionBadge.innerHTML = `<i class="fas ${
+                    action === 'search' ? 'fa-search' : 
+                    action === 'github' ? 'fa-github' : 'fa-comment'
+                }"></i> ${action}`;
+                header.appendChild(actionBadge);
+            }
+
+            // Message content
+            const messageContent = document.createElement('div');
+            messageContent.className = 'text-gray-200 whitespace-pre-wrap';
+            messageContent.textContent = content;
+
+            // Assemble the message
+            contentContainer.appendChild(header);
+            contentContainer.appendChild(messageContent);
+            innerDiv.appendChild(avatar);
+            innerDiv.appendChild(contentContainer);
+            messageDiv.appendChild(innerDiv);
+
+            return messageDiv;
+        }
+
+        function addMessage(content, isUser = false, model = null, action = null) {
+            if (welcomeScreen) {
+                welcomeScreen.remove();
+            }
+            const messageElement = createMessageElement(content, isUser, model, action);
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function addThinkingMessage() {
+            const thinkingDiv = createMessageElement('Thinking...', false);
+            thinkingDiv.id = 'thinking-message';
+            thinkingDiv.querySelector('.text-gray-200').className += ' thinking';
+            chatContainer.appendChild(thinkingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function removeThinkingMessage() {
+            const thinkingMessage = document.getElementById('thinking-message');
+            if (thinkingMessage) {
+                thinkingMessage.remove();
+            }
+        }
+
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                if (!isProcessing && userInput.value.trim()) {
+                    chatForm.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isProcessing) return;
+
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            isProcessing = true;
+            sendButton.disabled = true;
+            
+            // Add user message
+            addMessage(message, true);
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            charCount.textContent = '0/2000';
+
+            // Add thinking message
+            addThinkingMessage();
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        model: currentModel.textContent,
+                        action: 'direct'
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                removeThinkingMessage();
+                addMessage(data.response, false, data.model, data.action);
+                updateModelBadge(data.model || 'mistral');
+
+            } catch (error) {
+                removeThinkingMessage();
+                addMessage('Sorry, there was an error processing your request. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                isProcessing = false;
+                sendButton.disabled = false;
+            }
+        });
+
+        // Enable/disable send button based on input
+        sendButton.disabled = true;
+        
+        // Initialize connection status
+        const connectionStatus = document.getElementById('connection-status');
+        fetch('http://127.0.0.1:8000/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: 'ping', model: 'mistral', action: 'direct' })
+        }).catch(() => {
+            connectionStatus.classList.remove('bg-green-500');
+            connectionStatus.classList.add('bg-red-500');
+            const statusText = connectionStatus.nextElementSibling;
+            statusText.textContent = 'Disconnected';
+            addMessage('⚠️ Could not connect to the AI server. Please make sure the Python backend is running.');
+        });
+    </script>
+</body>
+</html>
